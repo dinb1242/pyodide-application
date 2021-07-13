@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    
+</head>
+<body>
+    <h1>Pyodide 0.17 Test Page</h1>
+
+    
+    <button onclick="main();">Pyodide Import</button>
+    <br/><br/>
+    <input id="input_code" placeholder="Type a python code"/>
+    <button onclick="runPythonCode();">run!</button>
+    <br/>
+    <textarea id="ta_console" style="width: 30vw; height: 200px;">Before Initialized.</textarea>
+
+    <script>
+
+        let status = document.getElementById('p_status');
+        let code = document.getElementById('input_code');
+        let codeArea = document.getElementById('ta_console');
+
+        // To import pyodide
+        async function main(){
+            codeArea.value = "Initializing...\n";
+            await loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.17.0/full/' })
+                .then(() => {codeArea.value += 'Pyodide has been initialized.\n'})
+            console.log(pyodide.runPython(`
+                import sys
+                sys.version
+            `));
+        }
+
+        async function runPythonCode() {
+            try {
+                let output = await pyodide.runPythonAsync(code.value);
+                codeArea.value += output + '\n';
+            } catch (e) {
+
+            }
+        }
+    </script>
+</body>
+</html>

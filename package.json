@@ -1,0 +1,27 @@
+{
+  "name": "pyodide-application",
+  "version": "1.0.0",
+  "description": "Pyodide Project to practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinb1242/pyodide-application.git"
+  },
+  "keywords": [
+    "wasm"
+  ],
+  "author": "Jeong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dinb1242/pyodide-application/issues"
+  },
+  "homepage": "https://github.com/dinb1242/pyodide-application#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}
